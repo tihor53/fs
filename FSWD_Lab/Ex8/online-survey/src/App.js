@@ -1,3 +1,4 @@
+// Importing React and required modules
 import React, { useEffect, useState } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import BasicInfo from './BasicInfo';
@@ -8,12 +9,20 @@ import { About } from './About';
 import './App.css';
 
 function App() {
+  // State for storing data
   const [basicData, setBasicData] = useState(JSON.parse(localStorage.getItem('data')) || {});
   const [questionData, setQuestionData] = useState(JSON.parse(localStorage.getItem('questiondata')) || {});
 
-  useEffect(() => { localStorage.setItem('data', JSON.stringify(basicData)); }, [basicData]);
-  useEffect(() => { localStorage.setItem('questiondata', JSON.stringify(questionData)); }, [questionData]);
+  // Saving data to localStorage whenever it changes
+  useEffect(() => {
+    localStorage.setItem('data', JSON.stringify(basicData));
+  }, [basicData]);
 
+  useEffect(() => {
+    localStorage.setItem('questiondata', JSON.stringify(questionData));
+  }, [questionData]);
+
+  // Functions to update data
   const addBasicData = (name, email, contact) => {
     setBasicData({ name, email, contact });
   };
@@ -22,6 +31,7 @@ function App() {
     setQuestionData({ profession, interest, reference });
   };
 
+  // Routes for navigation
   return (
     <Router>
       <Routes>
