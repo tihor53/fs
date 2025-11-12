@@ -1,0 +1,21 @@
+body {
+  background-color: #F2EAD3;
+}
+.navbar {
+  width: 59vw;
+  height: 5vh;
+  position: fixed;
+}
+.qform {
+  margin: 10vh auto 5vh;
+}
+.badge {
+  color: black;
+}
+.footer {
+  background-color: green;
+  position: fixed;
+  width: 100%;
+  bottom: 0;
+  color: white;
+}
