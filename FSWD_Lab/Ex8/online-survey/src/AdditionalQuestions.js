@@ -10,37 +10,28 @@ export default function AdditionalQuestions({ addQuestionData }) {
   const submit = (e) => {
     e.preventDefault();
     if (!profession || !interest || !reference) {
-      alert("All fields are necessary!");
+      alert("All fields are required!");
       return;
     }
-
     addQuestionData(profession, interest, reference);
     navigate('/details');
   };
 
   return (
-    <div className="container-fluid qform">
-      <div className="col-md-5 m-auto">
-        <form onSubmit={submit}>
-          <h4>Additional Questions</h4>
-          <div>
-            <label>What is your profession?</label>
-            <input type="radio" value="Student" onChange={() => setProfession("Student")} /> Student
-            <input type="radio" value="Software Engineer" onChange={() => setProfession("Software Engineer")} /> Software Engineer
-            <input type="radio" value="Others" onChange={() => setProfession("Others")} /> Others
-            <input type="text" placeholder="Specify your profession" onChange={(e) => setProfession(e.target.value)} />
-          </div>
-          <div>
-            <label>Your Interest:</label>
-            <input type="text" onChange={(e) => setInterest(e.target.value)} />
-          </div>
-          <div>
-            <label>Reference:</label>
-            <input type="text" onChange={(e) => setReference(e.target.value)} />
-          </div>
-          <button type="submit">Next</button>
-        </form>
-      </div>
+    <div className="qform">
+      <form onSubmit={submit}>
+        <h3>Additional Questions</h3>
+        <label>Profession:</label><br />
+        <input type="radio" name="profession" onChange={() => setProfession("Student")} /> Student
+        <input type="radio" name="profession" onChange={() => setProfession("Engineer")} /> Engineer
+        <input type="radio" name="profession" onChange={() => setProfession("Other")} /> Other<br />
+        <input type="text" placeholder="Specify profession" onChange={(e) => setProfession(e.target.value)} /><br />
+        <label>Interest:</label>
+        <input type="text" placeholder="Your Interest" onChange={(e) => setInterest(e.target.value)} /><br />
+        <label>Reference:</label>
+        <input type="text" placeholder="Reference" onChange={(e) => setReference(e.target.value)} /><br />
+        <button type="submit">Next</button>
+      </form>
     </div>
   );
 }
